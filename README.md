@@ -10,4 +10,4 @@ Created July 3, 2015 from a variety of files I have writted in the past.
 * starxyz.py - Python code to compute XYZ for a table following the VOTable format.
 * uvw_errs.py - Incomplete file (a translation of the IDL version) to compute errors for the UVW
 * dr_uvw.pro - IDL code to compute UVW and select those in the "good UVW box" defined by Zuckerman & Song ARAA 2004, 42, 685
-* uvw_errs.py - IDL code to compute UVW and calculate errors. Also returns XYZ
+* uvw_errs.pro - IDL code to compute UVW and calculate errors. Also returns XYZ
