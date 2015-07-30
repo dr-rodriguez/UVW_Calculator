@@ -7,10 +7,10 @@ Translation of my uvw_errs.pro routing from IDL
 """
 
 from math import cos, sin
-from pylab import double
-from random import gauss
+#from pylab import double
+from random import seed, gauss
 
-# ==============
+# ============================================
 # Function to calculate UVW given RA, Dec, Distance, RV, and PMs
 def uvw(ra,dec,d,pmra,pmde,rv):
 	k = 4.74047 #Equivalent of 1 A.U/yr in km/s  
@@ -26,7 +26,7 @@ def uvw(ra,dec,d,pmra,pmde,rv):
 
 	radcon = 3.1415926/180
 	cosd = cos(dec * radcon)
-	sind = sin(dec * radcon )
+	sind = sin(dec * radcon)
 	cosa = cos(ra * radcon)
 	sina = sin(ra * radcon)
 
@@ -42,7 +42,7 @@ def uvw(ra,dec,d,pmra,pmde,rv):
 
 	return u,v,w
 
-
+# ============================================
 
 if len(sys.argv)<6:
 	print """
@@ -75,24 +75,27 @@ else:
         derr = 0.0
 
 # Initialize the arrays
-good = 0
+seed() # random seed 
 num = 4000
-rv    = []
-dist  = []
-pmra  = []
-pmdec = []
+#rv    = []
+#dist  = []
+#pmra  = []
+#pmdec = []
+u = []
+v = []
+w = []
 
-"""
-# IDL CODE
-IF rverr gt 0. THEN BEGIN
-  array = randomn(seed1,num)
-  rv = array * rverr + rv0
-  good = 1
-ENDIF ELSE rv[*] = rv0
-"""
-
+# Compute UVW using the error terms
 for i in range(num):
 	if rverr>0: rv = gauss(rv0,rverr) else rv = rv0
-	if pmra_err>0: pmra = gauss(rv0,rverr) else rv = rv0
+	if pmra_err>0: pmra = gauss(pmra0,pmra_err) else pmra = pmra0
+	if pmde_err>0: pmdec = gauss(pmdec0,pmde_err) else pmdec = pmdec0
+	if derr>0: dist = guass(dist0,derr) else dist = dist0
 
-u,v,w = uvw(double(ra[i]), double(dec[i]), double(d[i]),pmra[i],pmde[i],rv[i])
+	u0,v0,w0 = uvw(ra,dec,dist,pmra,pmde,rv)
+	u.append(u0)
+	v.append(v0)
+	w.append(w0)
+
+# Compute mean and standard deviation for UVW
+
