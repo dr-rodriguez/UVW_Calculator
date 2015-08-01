@@ -11,9 +11,9 @@ HTML
 
 Python
 * druvw.py - contains the functions uvw and xyz that are called in subsequent Python programs
-* staruvw.py - computes UVW for a table following the VOTable format.
-* starxyz.py - computes XYZ for a table following the VOTable format.
-* uvw_errs.py - computes errors for the UVW of a single object
+* staruvw.py - computes UVW for a table following the VOTable format
+* starxyz.py - computes XYZ for a table following the VOTable format
+* uvw_errs.py - computes UVW and errors for a single object
 
 IDL
 * dr_uvw.pro - computes UVW and select those in the "good UVW box" defined by Zuckerman & Song ARAA 2004, 42, 685
