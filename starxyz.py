@@ -12,24 +12,9 @@ from astropy import coordinates as coord
 from astropy import units as u
 import sys
 from pylab import double
+from druvw import xyz
 
-# ==============
-# Function to XYZ given RA, Dec, and Distance
-def xyz(ra,dec,d):
-
-   c = coord.ICRSCoordinates(ra=ra, dec=dec, unit=(u.degree, u.degree))
-   w = c.transform_to(coord.GalacticCoordinates)
-   l,b = w.l.radians,w.b.radians
-
-   xgc = d * cos(b) * cos(l)
-   ygc = d * cos(b) * sin(l)
-   zgc = d * sin(b)
-   # See http://www.astro.virginia.edu/class/majewski/astr551/lectures/COORDS/coords.html
-
-   # If positive towards anticenter
-   #xgc = -1*xgc
-
-   return xgc,ygc,zgc
+# =================================
 
 
 if len(sys.argv)==1:
@@ -66,15 +51,6 @@ ra = t.array['RA']
 dec = t.array['Dec']
 name = t.array['Name']
 d = t.array['D']
-
-
-#d = t.array['Dkin_Oct']
-#d = t.array['d10']
-#d = t.array['Dist']
-
-
-
-#print d
 
 num = len(ra)
 
