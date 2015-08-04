@@ -7,7 +7,7 @@ Translation of my uvw_errs.pro routing from IDL
 """
 
 import sys
-from math import cos, sin
+#from math import cos, sin
 from pylab import mean, std #double
 from random import seed, gauss
 from druvw import uvw # import my UVW package

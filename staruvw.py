@@ -6,13 +6,13 @@ Apr 28, 2013
 Read in VOTable and compute UVW
 """
 
-from math import cos, sin
+#from math import cos, sin
 from astropy.io.votable import parse
-from astropy import coordinates as coord
-from astropy import units as u
+#from astropy import coordinates as coord
+#from astropy import units as u
 import sys
 from pylab import double
-from druvw import uvw, xyz
+from druvw import uvw
 
 # ===============================================
 
