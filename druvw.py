@@ -7,9 +7,7 @@ Package containing UVW and XYZ functions
 """
 
 from math import cos, sin
-from astropy.io.votable import parse
 from astropy import coordinates as coord
-#from astropy import units as u
 
 # ===================================================
 # Function to calculate UVW given RA, Dec, Distance, RV, and PMs
@@ -57,7 +55,7 @@ def xyz(ra,dec,d):
    zgc = d * sin(b)
    # See http://www.astro.virginia.edu/class/majewski/astr551/lectures/COORDS/coords.html
 
-   # left-handed? (wrong?)
+   # left-handed?
    #xgc = -1*xgc
 
    return xgc,ygc,zgc

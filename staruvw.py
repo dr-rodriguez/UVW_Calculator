@@ -6,10 +6,7 @@ Apr 28, 2013
 Read in VOTable and compute UVW
 """
 
-#from math import cos, sin
 from astropy.io.votable import parse
-#from astropy import coordinates as coord
-#from astropy import units as u
 import sys
 from pylab import double
 from druvw import uvw
@@ -30,24 +27,18 @@ if len(sys.argv)==1:
 file = sys.argv[1]
 
 if len(sys.argv)>2:
-        outfile = sys.argv[2]
+		outfile = sys.argv[2]
 else:
-        outfile = 'uvw_table.txt'
+		outfile = 'uvw_table.txt'
 
 
 votable = parse(file)
 t = votable.get_first_table()
 
+# Grab variables from the loaded VOTable
 ra = t.array['ra']
 dec = t.array['dec']
 name = t.array['designation']
-#name = t.array['Name']
-
-#d = t.array['Dist']
-#pmra = t.array['pmra']
-#pmde = t.array['pmde']
-#rv = t.array['RV']
-
 d = t.array['D_bP']
 pmra = t.array['pmra']
 pmde = t.array['pmde']
