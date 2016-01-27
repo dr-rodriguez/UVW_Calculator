@@ -7,7 +7,7 @@ Package containing UVW and XYZ functions
 """
 
 from math import cos, sin
-from astropy import coordinates as coord
+from astropy.coordinates import SkyCoord
 
 # ===================================================
 # Function to calculate UVW given RA, Dec, Distance, RV, and PMs
@@ -46,17 +46,14 @@ def uvw(ra,dec,d,pmra,pmde,rv):
 # Function to XYZ given RA, Dec, and Distance
 def xyz(ra,dec,d):
 
-   c = coord.ICRSCoordinates(ra=ra, dec=dec, unit=(u.degree, u.degree))
-   w = c.transform_to(coord.GalacticCoordinates)
-   l,b = w.l.radians,w.b.radians
+   c = SkyCoord(ra=ra, dec=dec, frame='icrs', unit='deg')
+   l,b = c.galactic.l.radian,c.galactic.b.radian
+
 
    xgc = d * cos(b) * cos(l)
    ygc = d * cos(b) * sin(l)
    zgc = d * sin(b)
    # See http://www.astro.virginia.edu/class/majewski/astr551/lectures/COORDS/coords.html
-
-   # left-handed?
-   #xgc = -1*xgc
 
    return xgc,ygc,zgc
 
