@@ -13,7 +13,7 @@ import numpy as np
 # ===================================================
 # Function to calculate UVW given RA, Dec, Distance, RV, and PMs
 def uvw(ra,dec,d,pmra,pmde,rv):
-	k = 4.74047 #Equivalent of 1 A.U/yr in km/s  
+    k = 4.74047 #Equivalent of 1 A.U/yr in km/s
     A00 = 0.0548755604
     A01 = 0.8734370902
     A02 = 0.4838350155
@@ -32,7 +32,7 @@ def uvw(ra,dec,d,pmra,pmde,rv):
     pmra = np.array(pmra)
     pmde = np.array(pmde)
 
-	radcon = 3.1415926/180 # radian conversion factor
+    radcon = 3.1415926/180 # radian conversion factor
 
     try:
         cosd = cos(dec * radcon)
@@ -50,18 +50,18 @@ def uvw(ra,dec,d,pmra,pmde,rv):
     vec2 = k * pmra/plx
     vec3 = k * pmde/plx
 
-	u = (A00*cosa*cosd + A01*sina*cosd + A02*sind) * vec1 + \
+    u = (A00*cosa*cosd + A01*sina*cosd + A02*sind) * vec1 + \
         (-A00*sina + A01*cosa) * vec2 + \
         (-A00*cosa*sind - A01*sina*sind + A02*cosd) * vec3
-	v = (A10*cosa*cosd + A11*sina*cosd + A12*sind) * vec1 + \
+    v = (A10*cosa*cosd + A11*sina*cosd + A12*sind) * vec1 + \
         (-A10*sina + A11*cosa) * vec2 + \
         (-A10*cosa*sind - A11*sina*sind + A12*cosd) * vec3
-	w = (A20*cosa*cosd + A21*sina*cosd + A22*sind) * vec1 + \
+    w = (A20*cosa*cosd + A21*sina*cosd + A22*sind) * vec1 + \
         (-A20*sina + A21*cosa) * vec2 + \
         (-A20*cosa*sind - A21*sina*sind + A22*cosd) * vec3
-	u = -u
+    u = -u
 
-	return u,v,w
+    return u,v,w
 
 
 # ===================================================
