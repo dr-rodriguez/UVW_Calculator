@@ -1,8 +1,8 @@
-# UVW_Calculator
+# UVW Calculator
 Javascript, Python, and IDL tools to calculate stellar UVW velocities
 
 ## Information
-Created July 3, 2015 from a variety of files I have writted in the past.
+Created July 3, 2015 from a variety of files I have written in the past.
 
 ## Files
 
